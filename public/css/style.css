@@ -1,0 +1,415 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+/* font-family: 'Poor Story', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* font-family: 'Roboto', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+/* font-family: 'Poppins', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+/* font-family: 'Ubuntu', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+/* font-family: 'Poor Story', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+/* font-family: 'Varela Round', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+/* font-family: 'Teko', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+/* font-family: 'Comfortaa', cursive; */
+
+/* styling */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: aliceblue;
+    border: 0.5px solid rgb(124, 124, 124);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(124, 124, 124);
+}
+
+
+/* utility class */
+.userSelectNone {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+/* info box */
+.notifierContainer {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.notifierContainer .notification {
+    color: white;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: capitalize;
+    font-family: 'Comfortaa', cursive;
+    width: fit-content;
+    height: auto;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 1px;
+    box-shadow: 0 0 5px gray;
+}
+
+
+/* add new note division */
+.fixedCont {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.542);
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.fixedInnerCont {
+    position: fixed;
+    padding: 15px 20px;
+    background-color: rgb(255, 0, 119);
+    border: 2px solid rgb(255, 0, 119);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px aliceblue;
+}
+
+.crossCont {
+    background-color: rgb(255, 0, 119);
+    padding: 3px;
+    margin: 2px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.crossSign {
+    background-color: aliceblue;
+    padding: 0 5px;
+    border-radius: 50%;
+    border: 2px solid aliceblue;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.crossSign span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.1em;
+    color: rgb(255, 0, 119);
+    padding: 1.79px 6px;
+}
+
+.addNoteCont {
+    padding: 10px;
+    border: 1.58px solid aliceblue;
+    border-radius: 3.5px;
+}
+
+.headingCont {
+    background-color: rgb(255, 0, 119);
+    padding: 5px;
+    margin: 2px;
+    border-radius: 3px;
+}
+
+.heading {
+    padding: 3px;
+    background-color: rgb(255, 0, 119);
+    border-radius: 3px;
+}
+
+.heading h3 {
+    color: aliceblue;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: 1.1px;
+}
+
+.inputCont {
+    padding: 5px;
+    margin: 2px;
+    margin-left: 5px;
+}
+
+.inputCont input,
+.msgCont textarea {
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9em;
+    border-radius: 3px;
+    border: 1px solid aliceblue;
+    outline: aliceblue;
+    color: aliceblue;
+    background-color: rgb(255, 0, 119);
+}
+
+.inputCont input::placeholder {
+    color: aliceblue;
+    text-transform: capitalize;
+}
+
+.msgCont {
+    margin: 2px;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.msgCont textarea {
+    resize: none;
+}
+
+.msgCont textarea::placeholder {
+    color: aliceblue;
+    text-transform: capitalize;
+}
+
+.buttonCont {
+    background-color: rgb(255, 0, 119);
+    text-align: right;
+    padding: 5px;
+    margin: 2px;
+}
+
+.buttonCont button {
+    color: rgb(255, 0, 119);
+    font-size: 1.1em;
+    background-color: aliceblue;
+    border: 1px solid aliceblue;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+/* main notes division */
+.container {
+    width: 100%;
+    background-color: aliceblue;
+}
+
+.innerContainer {
+    padding: 30px 20px;
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.signCont {
+    position: fixed;
+    width: fit-content;
+    bottom: 15px;
+    right: 15px;
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.signCont .sign,
+.signCont .toolTipCont {
+    background-color: rgb(255, 0, 119);
+    padding: 5px 8px;
+    width: fit-content;
+    height: fit-content;
+    transition: all 0.25s;
+    box-shadow: 0 0 8px grey;
+}
+
+.signCont .sign {
+    border-radius: 50%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.signCont .toolTipCont {
+    display: block;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+#addIcon,
+.toolTip {
+    font-family: 'Poor Story', cursive;
+    color: black;
+    padding: 5px;
+    font-size: 1.4em;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.noteCont {
+    background-color: yellow;
+    padding: 6px;
+    border-radius: 4px;
+    border: 2px solid yellow;
+    box-shadow: 0px 0px 8px rgba(128, 128, 128, 0.798);
+    width: 320px;
+    margin: 15px;
+    height: 128px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.noteCont::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.noteCont::-webkit-scrollbar-track {
+    background-color: aliceblue;
+    border: 0.5px solid rgb(124, 124, 124);
+    border-radius: 4px;
+}
+
+.noteCont::-webkit-scrollbar-thumb {
+    background-color: rgb(124, 124, 124);
+    border-radius: 4px;
+}
+
+.noteHeading {
+    background-color: yellow;
+    padding: 3px;
+}
+
+.noteHeading span {
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
+    text-transform: capitalize;
+}
+
+.note {
+    padding: 3px;
+    background-color: yellow;
+}
+
+.note span {
+    color: black;
+    font-family: 'Poor Story', cursive;
+    font-size: 1em;
+}
+
+.options {
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.options .dateCreatedCont {
+    background-color: yellow;
+    padding: 3px;
+}
+
+.options .dateCreatedCont .spanContDate {
+    padding: 0 1px;
+}
+
+.options .dateCreatedCont .spanContDate span {
+    color: black;
+    text-transform: capitalize;
+    font-size: 1.2em;
+    font-family: 'Teko', sans-serif;
+    letter-spacing: 1px;
+}
+
+#hiddenLayer {
+    display: none;
+    background: transparent;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.optionsLinksCont {
+    background-color: aliceblue;
+    border: 1px solid aliceblue;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.637);
+    border-radius: 3px;
+    display: none;
+    position: absolute;
+    margin-left: 202.5px;
+    margin-bottom: 28px;
+}
+
+.mainoptionCont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 1px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+.mainoptionCont:hover {
+    background-color: rgba(128, 128, 128, 0.131);
+}
+
+.optionsIcon {
+    width: 19px;
+    height: 20px;
+}
+
+.spanOption {
+    padding: 1px;
+    margin-left: 2px;
+}
+
+.spanOption span {
+    color: black;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.1em;
+}
+
+.optionsCont {
+    text-align: right;
+    padding: 0 7px;
+    padding-bottom: 6px;
+    width: fit-content;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.optionsCont:hover {
+    background-color: #ffeb3b;
+}
+
+.optionsCont span {
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
 import connectToDB from "./connection/db.conn.js";
@@ -39,6 +40,7 @@ app.use(
     extended: true,
   })
 );
+app.use(cookieParser());
 app.use(express.json());
 app.use("/api", authRouter);
 app.use("/api", userDataRouter);

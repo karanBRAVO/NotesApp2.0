@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { authModel } from "../models/auth.model.js";
 
 export const authenticateUser = (req, res, next) => {
   try {
@@ -22,5 +23,39 @@ export const authenticateUser = (req, res, next) => {
     next();
   } catch (error) {
     res.json({ success: false, message: error.message });
+  }
+};
+
+export const isLoggedIn = async (req, res, next) => {
+  try {
+    // getting token
+    const token = req.cookies.token;
+    if (!token) {
+      const error = new Error('<a href="/notesapp2_0/login">Login Please</a>');
+      throw error;
+    }
+
+    // verifying token
+    const verifyToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    if (!verifyToken) {
+      const error = new Error(
+        'You must <a href="/notesapp2_0/login">Login Please</a> before getting to main page'
+      );
+      throw error;
+    }
+
+    // finding user in db
+    const id = verifyToken.id;
+    const user = await authModel.findOne({ _id: id });
+    if (!user) {
+      const error = new Error(
+        `You must <a href="/notesapp2_0/signup">Signup Please</a> before getting to main page`
+      );
+      throw error;
+    }
+
+    next();
+  } catch (error) {
+    res.send(`<h1>You are not Logged In</h1><p>${error.message}</p>`);
   }
 };

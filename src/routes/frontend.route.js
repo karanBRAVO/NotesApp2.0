@@ -4,10 +4,11 @@ import {
   loginUser,
   mainPage,
 } from "../controllers/frontend.controller.js";
+import { isLoggedIn } from "../middlewares/authenticateUser.middleware.js";
 
 const router = express.Router();
 
-router.get("/notes", mainPage);
+router.get("/notes", isLoggedIn, mainPage);
 router.get("/signup", signupUser);
 router.get("/login", loginUser);
 

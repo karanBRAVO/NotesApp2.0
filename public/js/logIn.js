@@ -41,6 +41,7 @@ logInBtn.addEventListener("click", async (e) => {
         sendNotification(data.message, "green", 5000);
         const token = data.token;
         localStorage.setItem("token", token);
+        document.cookie = `token=${token}; path=/`;
         window.location.href = "/notesapp2_0/notes";
       } else {
         sendNotification(data.message, "red", 5000);

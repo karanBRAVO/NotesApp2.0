@@ -32,6 +32,7 @@ showProfileBtn.addEventListener("click", () => {
 // logging out
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("token");
+  document.cookie = `token=""; path=/`;
   window.location.href = "/notesapp2_0/login";
 });
 

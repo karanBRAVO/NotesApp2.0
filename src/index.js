@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectToDB from "./connection/db.conn.js";
 import authRouter from "./routes/auth.route.js";
 import userDataRouter from "./routes/userData.route.js";
+import userRouter from "./routes/user.route.js";
 
 // configuring dotenv
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(
 app.use(express.json());
 app.use("/api", authRouter);
 app.use("/api", userDataRouter);
+app.use("/api", userRouter);
 
 // starting server
 app.listen(PORT, (err) => {

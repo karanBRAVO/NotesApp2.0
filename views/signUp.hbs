@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <title>Notes APP 2.0 - Sign Up</title>
+  </head>
+  <body>
+    <div class="notifierContainer" id="notifier"></div>
+    <div class="container">
+      <form class="signup-form">
+        <h2>Sign Up</h2>
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          autocomplete="off"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="off"
+          required
+        />
+
+        <button type="button" id="signUpBtn">Sign Up</button>
+        <p>Already have an account? <a href="/notesapp2_0/Login" id="loginbtn">Login</a></p>
+      </form>
+    </div>
+
+    <script src="../js/signUp.js"></script>
+  </body>
+</html>

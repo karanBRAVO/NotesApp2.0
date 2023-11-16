@@ -30,6 +30,7 @@
   "homepage": "https://github.com/karanBRAVO/NotesApp2.0#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "hbs": "^4.2.0",

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/**/*.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "src/$1" }],
+  "env": {
+    "MONGO_URI": "@mongo-uri",
+    "JWT_SECRET_KEY": "@jwt-secret-key"
+  }
+}

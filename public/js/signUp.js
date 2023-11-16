@@ -41,13 +41,15 @@ signUpBtn.addEventListener("click", async (e) => {
         sendNotification(data.message, "green", 5000);
         setTimeout(() => {
           loginbtn.click();
-        }, 5000);
+        }, 1000);
       } else {
         sendNotification(data.message, "red", 5000);
       }
     } catch (error) {
       console.log(error);
     }
+  } else {
+    sendNotification("Username and password are required", "red", 5000);
   }
 
   signUpBtn.style.backgroundColor = "#3498db";

@@ -46,9 +46,9 @@ deleteAccountBtn.addEventListener("click", async () => {
       },
     });
     const data = await res.json();
-    console.log(data);
     if (data.success) {
       sendNotification(data.message, "green", 5000);
+      logoutBtn.click();
       location.href = "/notesapp2_0/signup";
     } else {
       sendNotification(data.message, "red", 5000);

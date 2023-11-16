@@ -53,6 +53,8 @@ logInBtn.addEventListener("click", async (e) => {
     } catch (error) {
       console.log(error);
     }
+  } else {
+    sendNotification("Username and password are required", "red", 5000);
   }
 
   logInBtn.style.backgroundColor = "#3498db";

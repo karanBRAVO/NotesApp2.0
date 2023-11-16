@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectToDB from "./connection/db.conn.js";
+import authRouter from "./routes/auth.route.js";
 
 // configuring dotenv
 dotenv.config();
@@ -14,6 +15,14 @@ const app = express();
 
 // setting port
 const PORT = process.env.PORT || 3000;
+
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(express.json());
+app.use("/api", authRouter);
 
 // starting server
 app.listen(PORT, (err) => {

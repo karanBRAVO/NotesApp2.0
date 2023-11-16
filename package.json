@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -28,9 +29,11 @@
   },
   "homepage": "https://github.com/karanBRAVO/NotesApp2.0#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "hbs": "^4.2.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.1"
   }
 }

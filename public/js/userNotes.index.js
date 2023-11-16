@@ -14,6 +14,49 @@ const modify_crossSign = document.getElementById("modify_crossSign");
 const modify_note_title = document.getElementById("modify_note_title");
 const modify_userNote = document.getElementById("modify_userNote");
 const modifyNoteBtn = document.getElementById("modifyNoteBtn");
+const closeProfile = document.getElementById("closeProfile");
+const showProfileDiv = document.getElementById("showProfileDiv");
+const showProfileBtn = document.getElementById("showProfileBtn");
+const deleteAccountBtn = document.getElementById("deleteAccountBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+// close the profile page
+closeProfile.addEventListener("click", () => {
+  showProfileDiv.style.display = "none";
+});
+
+showProfileBtn.addEventListener("click", () => {
+  showProfileDiv.style.display = "flex";
+});
+
+// logging out
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.href = "/notesapp2_0/login";
+});
+
+// deleting the account
+deleteAccountBtn.addEventListener("click", async () => {
+  try {
+    const res = await fetch("/api/auth/delete-user", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.success) {
+      sendNotification(data.message, "green", 5000);
+      location.href = "/notesapp2_0/signup";
+    } else {
+      sendNotification(data.message, "red", 5000);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 const sendNotification = (msg, color, delay) => {
   notifier.style.display = "flex";
@@ -40,6 +83,9 @@ const getUserNotes = async () => {
     if (data.success) {
       return data.notes;
     } else {
+      if (String(data.message).toLowerCase() !== "no notes found") {
+        window.location.href = "/notesapp2_0/login";
+      }
       sendNotification(data.message, "red", 5000);
     }
   } catch (error) {
@@ -129,6 +175,7 @@ addNewNoteContainerShowBtn.addEventListener("click", (e) => {
   addNoteDiv.style.display = "flex";
   clearNote();
   hiddenLayer.click();
+  closeProfile.click();
 });
 
 // close the add note container
@@ -269,9 +316,11 @@ modifyNoteBtn.addEventListener("click", () => {
 
 // deleting the note
 const handleDeleteNoteClick = (id) => {
-  deleteUserNote(id);
   hiddenLayer.click();
-  rePopulateNotes();
+  if (confirm("Are you sure you want to delete")) {
+    deleteUserNote(id);
+    rePopulateNotes();
+  }
 };
 
 // re-populate the notes

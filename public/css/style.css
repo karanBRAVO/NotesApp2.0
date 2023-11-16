@@ -50,6 +50,67 @@ body::-webkit-scrollbar-thumb {
     -webkit-user-select: none;
 }
 
+/* profile */
+.showprofileBtnCont {
+    width: fit-content;
+    position: fixed;
+    top: 5px;
+    right: 10px;
+}
+
+#showProfileBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#showProfileBtn:hover {
+    background-color: #2980b9;
+}
+
+.profileContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 50px;
+    border-radius: 4px;
+}
+
+.profile-close-icon {
+    font-size: 24px;
+    cursor: pointer;
+    border: 1px solid #333;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin: 2px;
+}
+
+.profile_btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin: 2px;
+}
+
+.delAcc-btn {
+    background-color: #e74c3c;
+}
+
 /* info box */
 .notifierContainer {
     position: fixed;

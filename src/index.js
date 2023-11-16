@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectToDB from "./connection/db.conn.js";
 import authRouter from "./routes/auth.route.js";
+import userDataRouter from "./routes/userData.route.js";
 
 // configuring dotenv
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(
 );
 app.use(express.json());
 app.use("/api", authRouter);
+app.use("/api", userDataRouter);
 
 // starting server
 app.listen(PORT, (err) => {

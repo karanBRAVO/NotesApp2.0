@@ -4,11 +4,11 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
-import connectToDB from "./connection/db.conn.js";
-import authRouter from "./routes/auth.route.js";
-import userDataRouter from "./routes/userData.route.js";
-import userRouter from "./routes/user.route.js";
-import frontEndRouter from "./routes/frontend.route.js";
+import connectToDB from "./src/connection/db.conn.js";
+import authRouter from "./src/routes/auth.route.js";
+import userDataRouter from "./src/routes/userData.route.js";
+import userRouter from "./src/routes/user.route.js";
+import frontEndRouter from "./src/routes/frontend.route.js";
 
 // configuring dotenv
 dotenv.config();
@@ -27,11 +27,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // setting static folder
-const staticFolder = path.join(__dirname, "../public");
+const staticFolder = path.join(__dirname, "./public");
 app.use(express.static(staticFolder));
 
 // setting view engine
-const viewFolder = path.join(__dirname, "../views");
+const viewFolder = path.join(__dirname, "./views");
 app.set("views", viewFolder);
 app.set("view engine", "hbs");
 

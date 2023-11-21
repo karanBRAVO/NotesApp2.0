@@ -8,7 +8,9 @@ export const getUserNote = async (req, res) => {
     }
 
     // getting the notes from database
-    const notes = await userDataModel.find({ userId: req.userId });
+    const notes = await userDataModel
+      .find({ userId: req.userId })
+      .sort({ createdAt: -1 });
     if (!notes || notes.length == 0) {
       const err = new Error("No notes found");
       throw err;

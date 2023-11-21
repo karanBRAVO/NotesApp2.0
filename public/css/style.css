@@ -59,14 +59,18 @@ body::-webkit-scrollbar-thumb {
 }
 
 #showProfileBtn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.profileImage {
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
     cursor: pointer;
 }
 

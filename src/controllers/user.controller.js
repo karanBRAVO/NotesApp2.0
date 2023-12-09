@@ -1,5 +1,6 @@
 import { authModel } from "../models/auth.model.js";
 import { userDataModel } from "../models/userData.model.js";
+import bcrypt from "bcrypt";
 
 export const getPublicKey = async (req, res) => {
   try {
@@ -34,6 +35,25 @@ export const deleteUser = async (req, res) => {
   try {
     if (!req.userId) {
       const err = new Error("Bad request");
+      throw err;
+    }
+
+    const { password } = req.body;
+    if (password.length == 0) {
+      const err = new Error("Invalid password");
+      throw err;
+    }
+
+    // finding the user
+    const user = await authModel.findOne({ _id: req.userId });
+    if (!user) {
+      const err = new Error("User not found");
+      throw err;
+    }
+
+    // matching the password
+    if (!bcrypt.compareSync(password, user.password)) {
+      const err = new Error(`password not match`);
       throw err;
     }
 

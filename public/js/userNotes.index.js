@@ -38,23 +38,30 @@ logoutBtn.addEventListener("click", () => {
 
 // deleting the account
 deleteAccountBtn.addEventListener("click", async () => {
-  try {
-    const res = await fetch("/api/auth/delete-user", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-    if (data.success) {
-      sendNotification(data.message, "green", 5000);
-      logoutBtn.click();
-      location.href = "/notesapp2_0/signup";
-    } else {
-      sendNotification(data.message, "red", 5000);
+  const password = prompt("Re-enter your password to delete this account");
+
+  if (password.length > 0) {
+    try {
+      const res = await fetch("/api/auth/delete-user", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password: password,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        sendNotification(data.message, "green", 5000);
+        logoutBtn.click();
+        location.href = "/notesapp2_0/signup";
+      } else {
+        sendNotification(data.message, "red", 5000);
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
   }
 });
 

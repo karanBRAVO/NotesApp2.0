@@ -35,3 +35,11 @@ export const mainPage = (req, res) => {
     res.send(`<h1>Error</h1><p>${error.message}</p>`);
   }
 };
+
+export const homePage = (req, res) => {
+  try {
+    res.render("home");
+  } catch (error) {
+    res.send(`<h1>Error</h1><p>${error.message}</p>`);
+  }
+};

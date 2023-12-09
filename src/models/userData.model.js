@@ -8,11 +8,11 @@ const userDataSchema = new mongoose.Schema(
       required: true,
     },
     noteTitle: {
-      type: String,
+      type: Buffer,
       required: true,
     },
     noteDescription: {
-      type: String,
+      type: Buffer,
       required: true,
     },
   },

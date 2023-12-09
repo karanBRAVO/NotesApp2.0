@@ -18,7 +18,7 @@ const checkDetails = (username, password) => {
 export const signupUser = async (req, res, next) => {
   try {
     // getting the user details
-    const { username, password } = req.body;
+    const { username, password, publicKey } = req.body;
     if (!checkDetails(username, password)) {
       const err = new Error(`Invalid username or password`);
       throw err;
@@ -33,9 +33,11 @@ export const signupUser = async (req, res, next) => {
 
     // saving the user
     const hashedPassword = bcrypt.hashSync(password, 10);
+    const publicKeyBuffer = Buffer.from(publicKey, "base64");
     const user = new authModel({
       username,
       password: hashedPassword,
+      publicKey: publicKeyBuffer,
     });
     await user.save();
 

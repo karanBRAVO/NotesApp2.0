@@ -4,7 +4,8 @@ import { authModel } from "../models/auth.model.js";
 export const authenticateUser = (req, res, next) => {
   try {
     // getting token
-    const token = req.headers.authorization.split(" ")[1];
+    const token = req.cookies.token;
+    // const token = req.headers.authorization.split(" ")[1];
     if (!token) {
       const err = new Error("Invalid token");
       throw err;

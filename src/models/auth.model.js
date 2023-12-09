@@ -13,6 +13,10 @@ const authSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
+    publicKey: {
+      type: Buffer,
+      required: true,
+    },
   },
   { timestamps: true }
 );
